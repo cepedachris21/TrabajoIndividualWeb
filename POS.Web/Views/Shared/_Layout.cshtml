@@ -1,9 +1,14 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - POS System</title>
+    <title>@ViewData["Title"] - VentaPro</title>
+
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -11,15 +16,18 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <!-- Custom CSS -->
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Custom CSS - Material Design Dark -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
-<body>
+<body class="fade-in">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid px-4">
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                    <i class="fas fa-cash-register"></i> POS System
+                    <i class="fas fa-store"></i> VentaPro
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -28,24 +36,24 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">
-                                <i class="fas fa-home"></i> Home
+                                <i class="fas fa-home"></i> Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="SalesOrder" asp-action="Create">
-                                <i class="fas fa-plus-circle"></i> New Order
+                                <i class="fas fa-cart-plus"></i> Registrar Venta
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="SalesOrder" asp-action="Search">
-                                <i class="fas fa-search"></i> Search Orders
+                                <i class="fas fa-list-alt"></i> Historial
                             </a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <span class="navbar-text text-white">
-                                <i class="fas fa-user"></i> User: System
+                            <span class="navbar-text">
+                                <i class="fas fa-user-circle"></i> Admin: Carlos M.
                             </span>
                         </li>
                     </ul>
@@ -54,13 +62,13 @@
         </nav>
     </header>
 
-    <main role="main" class="pb-3">
+    <main role="main" class="py-4">
         @RenderBody()
     </main>
 
-    <footer class="border-top footer text-muted bg-light">
-        <div class="container text-center py-3">
-            &copy; 2024 - POS System - Point of Sale Application
+    <footer class="footer">
+        <div class="container text-center">
+            <span>&copy; 2025 VentaPro - Plataforma de Gestión de Ventas</span>
         </div>
     </footer>
 

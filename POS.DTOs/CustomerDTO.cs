@@ -6,22 +6,22 @@ namespace POS.DTOs
     {
         public int CustomerId { get; set; }
 
-        [Required(ErrorMessage = "Identification number is required")]
-        [RegularExpression(@"^\d{10,13}$", ErrorMessage = "Invalid identification number format")]
+        [Required(ErrorMessage = "El número de identificación es obligatorio")]
+        [RegularExpression(@"^\d{10,13}$", ErrorMessage = "Formato de documento inválido, debe contener entre 10-13 dígitos")]
         public string IdentificationNumber { get; set; }
 
-        [Required(ErrorMessage = "First name is required")]
-        [RegularExpression(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", ErrorMessage = "Only letters allowed")]
+        [Required(ErrorMessage = "Debe ingresar el primer nombre")]
+        [RegularExpression(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", ErrorMessage = "Solo se permiten caracteres alfabéticos")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Last name is required")]
-        [RegularExpression(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", ErrorMessage = "Only letters allowed")]
+        [Required(ErrorMessage = "Debe ingresar el apellido")]
+        [RegularExpression(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", ErrorMessage = "Solo se permiten caracteres alfabéticos")]
         public string LastName { get; set; }
 
-        [EmailAddress(ErrorMessage = "Invalid email format")]
+        [EmailAddress(ErrorMessage = "El formato del correo electrónico no es válido")]
         public string Email { get; set; }
 
-        [Phone(ErrorMessage = "Invalid phone format")]
+        [Phone(ErrorMessage = "El número telefónico ingresado no es válido")]
         public string Phone { get; set; }
 
         public string Address { get; set; }

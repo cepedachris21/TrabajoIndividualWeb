@@ -396,3 +396,31 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+/* T�tulos en blanco para mejor contraste */
+h1, h2, h4, h5, h6, .card-title {
+    color: #000000 !important;
+}
+
+h3 {
+    color: #ffffff !important;
+}
+
+/* Force Dark Grey Background */
+body {
+    background-color: #1a1a1a !important;
+    color: #e0e0e0 !important;
+}
+
+/* Navbar Customization for Visibility */
+.navbar-brand, .nav-link {
+    color: #64b5f6 !important; /* Light Blue */
+}
+
+.nav-link:hover, .navbar-brand:hover {
+    color: #9be7ff !important; /* Lighter Blue on Hover */
+}
+
+.navbar-text {
+    color: #b0bec5 !important; /* Light Grey for text */
+}

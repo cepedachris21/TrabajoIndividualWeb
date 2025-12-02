@@ -1,157 +1,229 @@
 ﻿@{
-    ViewData["Title"] = "Inicio";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-12 text-center mb-5">
-            <h1 class="display-3">
-                <i class="fas fa-cash-register text-primary"></i>
-                Sistema Punto de Venta
-            </h1>
-            <p class="lead text-muted">Sistema moderno de gestión de órdenes de venta</p>
-        </div>
-    </div>
-
-    <div class="row g-4">
-        <!-- Create Order Card -->
-        <div class="col-md-6">
-            <div class="card border-primary shadow-lg h-100 hover-card">
-                <div class="card-header bg-primary text-white text-center py-4">
-                    <i class="fas fa-shopping-cart fa-3x mb-3"></i>
-                    <h3>Crear Nueva Orden</h3>
-                </div>
-                <div class="card-body d-flex flex-column">
-                    <p class="card-text flex-grow-1">
-                        Inicie una nueva orden de venta seleccionando un cliente y agregando productos al carrito.
-                        El sistema gestiona automáticamente el inventario y calcula los totales.
-                    </p>
-                    <ul class="list-unstyled mb-4">
-                        <li><i class="fas fa-check text-success"></i> Seleccionar cliente</li>
-                        <li><i class="fas fa-check text-success"></i> Agregar productos con validación de stock</li>
-                        <li><i class="fas fa-check text-success"></i> Cálculo automático de impuestos</li>
-                        <li><i class="fas fa-check text-success"></i> Actualización automática de inventario</li>
-                    </ul>
-                    <a asp-controller="SalesOrder" asp-action="Create" class="btn btn-primary btn-lg w-100">
-                        <i class="fas fa-plus-circle"></i> Crear Orden
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Search Orders Card -->
-        <div class="col-md-6">
-            <div class="card border-success shadow-lg h-100 hover-card">
-                <div class="card-header bg-success text-white text-center py-4">
-                    <i class="fas fa-search fa-3x mb-3"></i>
-                    <h3>Buscar Órdenes</h3>
-                </div>
-                <div class="card-body d-flex flex-column">
-                    <p class="card-text flex-grow-1">
-                        Busque órdenes de venta existentes por número de orden o nombre de cliente.
-                        Vea detalles, imprima facturas y gestione su historial de ventas.
-                    </p>
-                    <ul class="list-unstyled mb-4">
-                        <li><i class="fas fa-check text-success"></i> Búsqueda inteligente</li>
-                        <li><i class="fas fa-check text-success"></i> Resultados paginados</li>
-                        <li><i class="fas fa-check text-success"></i> Ver detalles de orden</li>
-                        <li><i class="fas fa-check text-success"></i> Imprimir facturas en PDF</li>
-                    </ul>
-                    <a asp-controller="SalesOrder" asp-action="Search" class="btn btn-success btn-lg w-100">
-                        <i class="fas fa-search"></i> Buscar Órdenes
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Features Section -->
-    <div class="row mt-5">
+<div class="container-fluid px-4 mt-4">
+    <!-- Hero Section -->
+    <div class="row mb-4">
         <div class="col-12">
-            <div class="card shadow">
-                <div class="card-header bg-info text-white">
-                    <h4 class="mb-0"><i class="fas fa-star"></i> Características del Sistema</h4>
+            <div class="card border-0 shadow-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px;">
+                <div class="card-body text-white p-5">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h1 class="display-4 fw-bold mb-3">
+                                <i class="fas fa-chart-line me-3"></i>VentaPro
+                            </h1>
+                            <p class="lead mb-0">Control total de tus operaciones comerciales en una plataforma inteligente</p>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <i class="fas fa-rocket" style="font-size: 6rem; opacity: 0.3;"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0">
-                                    <i class="fas fa-check-circle text-success fa-2x"></i>
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h5>Validación de Stock</h5>
-                                    <p class="text-muted mb-0">
-                                        Verificación de inventario en tiempo real previene sobreventa
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0">
-                                    <i class="fas fa-calculator text-primary fa-2x"></i>
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h5>Cálculos Automáticos</h5>
-                                    <p class="text-muted mb-0">
-                                        Subtotales, impuestos y totales calculados automáticamente
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0">
-                                    <i class="fas fa-database text-warning fa-2x"></i>
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h5>Seguridad de Transacciones</h5>
-                                    <p class="text-muted mb-0">
-                                        Las transacciones de base de datos aseguran integridad de datos
-                                    </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Action Cards - Horizontal Layout -->
+    <div class="row g-4 mb-5">
+        <!-- Registrar Venta -->
+        <div class="col-lg-6">
+            <div class="card h-100 shadow border-0 hover-card" style="border-radius: 20px; overflow: hidden;">
+                <div class="row g-0 h-100">
+                    <div class="col-md-4 d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-receipt text-white" style="font-size: 4rem;"></i>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body h-100 d-flex flex-column justify-content-between p-4">
+                            <div>
+                                <h3 class="card-title mb-3">
+                                    <i class="fas fa-plus-circle text-primary me-2"></i>
+                                    Nueva Transacción
+                                </h3>
+                                <p class="card-text text-muted mb-3">
+                                    Procesa operaciones de venta de forma ágil y eficiente con nuestro sistema intuitivo de gestión comercial.
+                                </p>
+                                <div class="mb-3">
+                                    <span class="badge bg-primary me-2 mb-2"><i class="fas fa-user-tag me-1"></i> Cliente</span>
+                                    <span class="badge bg-success me-2 mb-2"><i class="fas fa-box-open me-1"></i> Productos</span>
+                                    <span class="badge bg-info me-2 mb-2"><i class="fas fa-percent me-1"></i> IVA Auto</span>
                                 </div>
                             </div>
+                            <a asp-controller="SalesOrder" asp-action="Create" class="btn btn-primary btn-lg w-100 mt-3" style="border-radius: 12px;">
+                                <i class="fas fa-arrow-right me-2"></i> Iniciar Proceso
+                            </a>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0">
-                                    <i class="fas fa-file-pdf text-danger fa-2x"></i>
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h5>Facturas en PDF</h5>
-                                    <p class="text-muted mb-0">
-                                        Genere facturas profesionales para impresión
-                                    </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Historial -->
+        <div class="col-lg-6">
+            <div class="card h-100 shadow border-0 hover-card" style="border-radius: 20px; overflow: hidden;">
+                <div class="row g-0 h-100">
+                    <div class="col-md-4 d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-folder-open text-white" style="font-size: 4rem;"></i>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body h-100 d-flex flex-column justify-content-between p-4">
+                            <div>
+                                <h3 class="card-title mb-3">
+                                    <i class="fas fa-clock text-success me-2"></i>
+                                    Registro de Operaciones
+                                </h3>
+                                <p class="card-text text-muted mb-3">
+                                    Accede al historial completo de transacciones y consulta información detallada de cada operación comercial.
+                                </p>
+                                <div class="mb-3">
+                                    <span class="badge bg-warning text-dark me-2 mb-2"><i class="fas fa-filter me-1"></i> Filtros</span>
+                                    <span class="badge bg-danger me-2 mb-2"><i class="fas fa-file-pdf me-1"></i> PDF</span>
+                                    <span class="badge bg-secondary me-2 mb-2"><i class="fas fa-eye me-1"></i> Detalles</span>
                                 </div>
                             </div>
+                            <a asp-controller="SalesOrder" asp-action="Search" class="btn btn-success btn-lg w-100 mt-3" style="border-radius: 12px;">
+                                <i class="fas fa-search me-2"></i> Explorar Registros
+                            </a>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0">
-                                    <i class="fas fa-shield-alt text-info fa-2x"></i>
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h5>Validación de Datos</h5>
-                                    <p class="text-muted mb-0">
-                                        Validación integral previene errores de datos
-                                    </p>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Cards - 3 Column Grid -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card shadow border-0 text-center p-4 hover-card" style="border-radius: 16px;">
+                <div class="rounded-circle bg-primary bg-opacity-10 d-inline-flex justify-content-center align-items-center mb-3" style="width: 80px; height: 80px;">
+                    <i class="fas fa-warehouse text-primary" style="font-size: 2rem;"></i>
+                </div>
+                <h5 class="fw-bold">Gestión de Stock</h5>
+                <p class="text-muted small mb-0">Monitoreo en tiempo real del inventario disponible</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow border-0 text-center p-4 hover-card" style="border-radius: 16px;">
+                <div class="rounded-circle bg-success bg-opacity-10 d-inline-flex justify-content-center align-items-center mb-3" style="width: 80px; height: 80px;">
+                    <i class="fas fa-calculator text-success" style="font-size: 2rem;"></i>
+                </div>
+                <h5 class="fw-bold">Cálculo Inteligente</h5>
+                <p class="text-muted small mb-0">Procesamiento automático de importes e impuestos</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow border-0 text-center p-4 hover-card" style="border-radius: 16px;">
+                <div class="rounded-circle bg-warning bg-opacity-10 d-inline-flex justify-content-center align-items-center mb-3" style="width: 80px; height: 80px;">
+                    <i class="fas fa-shield-alt text-warning" style="font-size: 2rem;"></i>
+                </div>
+                <h5 class="fw-bold">Seguridad Garantizada</h5>
+                <p class="text-muted small mb-0">Protección de datos con transacciones confiables</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Grid - 2x3 Layout -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h3 class="mb-4 fw-bold">
+                <i class="fas fa-gem text-primary me-2"></i>
+                Potencia tu Negocio
+            </h3>
+        </div>
+    </div>
+
+    <div class="row g-3 mb-5">
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-sm h-100 p-4" style="border-radius: 12px; border-left: 4px solid #667eea !important;">
+                <div class="d-flex align-items-start">
+                    <div class="flex-shrink-0">
+                        <div class="rounded bg-primary bg-opacity-10 p-3">
+                            <i class="fas fa-clipboard-check text-primary fa-2x"></i>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0">
-                                    <i class="fas fa-layer-group text-secondary fa-2x"></i>
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h5>Arquitectura por Capas</h5>
-                                    <p class="text-muted mb-0">
-                                        Estructura de código limpia, mantenible y escalable
-                                    </p>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h6 class="fw-bold mb-2">Verificación de Existencias</h6>
+                        <p class="text-muted small mb-0">Control preventivo que evita comercializar productos sin disponibilidad</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-sm h-100 p-4" style="border-radius: 12px; border-left: 4px solid #f093fb !important;">
+                <div class="d-flex align-items-start">
+                    <div class="flex-shrink-0">
+                        <div class="rounded bg-success bg-opacity-10 p-3">
+                            <i class="fas fa-file-invoice-dollar text-success fa-2x"></i>
                         </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h6 class="fw-bold mb-2">Documentación Digital</h6>
+                        <p class="text-muted small mb-0">Generación de comprobantes electrónicos en formato portable</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-sm h-100 p-4" style="border-radius: 12px; border-left: 4px solid #4facfe !important;">
+                <div class="d-flex align-items-start">
+                    <div class="flex-shrink-0">
+                        <div class="rounded bg-info bg-opacity-10 p-3">
+                            <i class="fas fa-check-double text-info fa-2x"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h6 class="fw-bold mb-2">Validaciones Múltiples</h6>
+                        <p class="text-muted small mb-0">Sistema robusto de verificación que reduce errores operativos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-sm h-100 p-4" style="border-radius: 12px; border-left: 4px solid #ff6b6b !important;">
+                <div class="d-flex align-items-start">
+                    <div class="flex-shrink-0">
+                        <div class="rounded bg-danger bg-opacity-10 p-3">
+                            <i class="fas fa-history text-danger fa-2x"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h6 class="fw-bold mb-2">Trazabilidad Completa</h6>
+                        <p class="text-muted small mb-0">Seguimiento histórico de todas las operaciones comerciales</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-sm h-100 p-4" style="border-radius: 12px; border-left: 4px solid #feca57 !important;">
+                <div class="d-flex align-items-start">
+                    <div class="flex-shrink-0">
+                        <div class="rounded bg-warning bg-opacity-10 p-3">
+                            <i class="fas fa-layer-group text-warning fa-2x"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h6 class="fw-bold mb-2">Diseño Modular</h6>
+                        <p class="text-muted small mb-0">Código estructurado con separación clara de responsabilidades</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-0 shadow-sm h-100 p-4" style="border-radius: 12px; border-left: 4px solid #48dbfb !important;">
+                <div class="d-flex align-items-start">
+                    <div class="flex-shrink-0">
+                        <div class="rounded bg-primary bg-opacity-10 p-3">
+                            <i class="fas fa-lock text-primary fa-2x"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h6 class="fw-bold mb-2">Transacciones Atómicas</h6>
+                        <p class="text-muted small mb-0">Integridad de datos asegurada mediante operaciones indivisibles</p>
                     </div>
                 </div>
             </div>
@@ -161,11 +233,27 @@
 
 <style>
     .hover-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-        .hover-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
-        }
+    .hover-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+    }
+
+    .badge {
+        font-weight: 500;
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+    }
+
+    .btn-lg {
+        font-weight: 600;
+        padding: 0.875rem 2rem;
+        transition: all 0.2s ease;
+    }
+
+    .btn-lg:hover {
+        transform: translateX(5px);
+    }
 </style>

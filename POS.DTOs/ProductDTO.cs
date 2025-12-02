@@ -6,16 +6,16 @@ namespace POS.DTOs
     {
         public int ProductId { get; set; }
 
-        [Required(ErrorMessage = "Product code is required")]
+        [Required(ErrorMessage = "El código del artículo es requerido")]
         public string ProductCode { get; set; }
 
-        [Required(ErrorMessage = "Product name is required")]
+        [Required(ErrorMessage = "Debe especificar el nombre del producto")]
         public string ProductName { get; set; }
 
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Unit price is required")]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than zero")]
+        [Required(ErrorMessage = "El precio unitario es obligatorio")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "El valor debe ser superior a cero")]
         public decimal UnitPrice { get; set; }
 
         public int StockQuantity { get; set; }

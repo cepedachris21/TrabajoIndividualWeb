@@ -4,27 +4,27 @@ namespace POS.DTOs
 {
     public class CreateSalesOrderDTO
     {
-        [Required(ErrorMessage = "Customer is required")]
+        [Required(ErrorMessage = "Debe seleccionar un comprador")]
         public int CustomerId { get; set; }
 
         public string? Notes { get; set; }
 
-        [Required(ErrorMessage = "At least one product is required")]
-        [MinLength(1, ErrorMessage = "At least one product is required")]
+        [Required(ErrorMessage = "Es necesario agregar al menos un artículo")]
+        [MinLength(1, ErrorMessage = "Es necesario agregar al menos un artículo")]
         public List<SalesOrderDetailDTO> OrderDetails { get; set; } = new();
     }
 
     public class SalesOrderDetailDTO
     {
-        [Required(ErrorMessage = "Product is required")]
+        [Required(ErrorMessage = "Debe especificar el producto")]
         public int ProductId { get; set; }
 
-        [Required(ErrorMessage = "Quantity is required")]
-        [Range(1, int.MaxValue, ErrorMessage = "Quantity must be at least 1")]
+        [Required(ErrorMessage = "La cantidad es obligatoria")]
+        [Range(1, int.MaxValue, ErrorMessage = "La cantidad mínima debe ser 1")]
         public int Quantity { get; set; }
 
-        [Required(ErrorMessage = "Unit price is required")]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than zero")]
+        [Required(ErrorMessage = "El precio unitario es obligatorio")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "El valor debe ser superior a cero")]
         public decimal UnitPrice { get; set; }
 
         // Additional properties for display
