@@ -1,0 +1,38 @@
+<!-- Stock Validation Error Modal -->
+<div class="modal fade" id="stockValidationModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content border-danger">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">
+                    <i class="fas fa-exclamation-triangle"></i> No se puede procesar la factura
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger">
+                    <i class="fas fa-info-circle"></i> Los siguientes productos superan el stock disponible:
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-danger">
+                            <tr>
+                                <th style="width: 20%;">Código</th>
+                                <th style="width: 50%;">Nombre del Producto</th>
+                                <th style="width: 15%;" class="text-center">Stock</th>
+                                <th style="width: 15%;" class="text-center">Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stockValidationTableBody">
+                            <!-- Products will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="fas fa-times"></i> Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

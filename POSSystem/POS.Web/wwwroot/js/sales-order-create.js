@@ -58,7 +58,7 @@ function initializeEventHandlers() {
             console.log('Validation failed');
             // Re-enable button if validation fails
             $submitBtn.prop('disabled', false);
-            $submitBtn.html('<i class="fas fa-save"></i> Crear Orden');
+            $submitBtn.html('<i class="fas fa-check-circle"></i> Procesar Venta');
             return false;
         }
 
@@ -374,7 +374,6 @@ function renderOrderItems() {
                                data-index="${originalIndex}" 
                                value="${item.quantity}" 
                                min="0" 
-                               max="${item.stockQuantity}"
                                style="width: 100px;" />
                         <small class="text-muted">Stock: ${item.stockQuantity}</small>
                     </div>
@@ -402,18 +401,11 @@ function renderOrderItems() {
 }
 
 function attachItemHandlers() {
-    // Quantity change handler with validation
+    // Quantity change handler - Allow any quantity, validation happens at submission
     $('.quantity-input').on('change', function () {
         const index = $(this).data('index');
         const newQuantity = parseInt($(this).val());
         const item = orderItems[index];
-
-        // REQUIREMENT 9: Validate stock
-        if (newQuantity > item.stockQuantity) {
-            showError(`No puede superar el stock disponible (${item.stockQuantity})`);
-            $(this).val(item.quantity);
-            return;
-        }
 
         // Allow 0 quantity (will be validated on form submission)
         if (newQuantity < 0 || isNaN(newQuantity)) {
@@ -505,27 +497,116 @@ function calculateTotals() {
 
 // Form validation (REQUIREMENT 6)
 function validateForm() {
+    console.log('=== VALIDATE FORM STARTED ===');
+    console.log('OrderItems array:', orderItems);
+
     const customerId = $('#customerId').val();
+    console.log('Customer ID:', customerId);
 
     if (!customerId || customerId === '0') {
+        console.log('❌ No customer selected');
         showError('Por favor seleccione un cliente');
         return false;
     }
 
     if (orderItems.length === 0) {
+        console.log('❌ No items in order');
         showError('Por favor, añada al menos un producto al pedido');
         return false;
     }
+    console.log('✅ Order has', orderItems.length, 'items');
 
     // Validate that all items have quantity > 0
     const itemsWithZeroQuantity = orderItems.filter(item => item.quantity === 0 || item.quantity < 1);
+    console.log('Items with zero quantity:', itemsWithZeroQuantity.length);
     if (itemsWithZeroQuantity.length > 0) {
         const productNames = itemsWithZeroQuantity.map(item => item.productName).join(', ');
+        console.log('❌ Zero quantity items:', productNames);
         showError(`Los siguientes productos tienen cantidad 0 o inválida: ${productNames}. Por favor ingrese una cantidad válida.`);
         return false;
     }
 
+    // NEW: Check for products exceeding stock
+    console.log('🔍 Checking stock for each item:');
+    orderItems.forEach(item => {
+        console.log(`  - ${item.productCode}: qty=${item.quantity}, stock=${item.stockQuantity}, exceeds=${item.quantity > item.stockQuantity}`);
+    });
+
+    const itemsExceedingStock = orderItems.filter(item => item.quantity > item.stockQuantity);
+    console.log('⚠️ Items exceeding stock:', itemsExceedingStock.length);
+    console.log('Items exceeding stock details:', itemsExceedingStock);
+
+    if (itemsExceedingStock.length > 0) {
+        console.log('🚨 CALLING showStockValidationModal...');
+        showStockValidationModal(itemsExceedingStock);
+        return false;
+    }
+
+    console.log('✅ All validations passed');
     return true;
+}
+
+// Show stock validation modal with products exceeding stock
+function showStockValidationModal(products) {
+    console.log('📋 ========== showStockValidationModal CALLED ==========');
+    console.log('Products received:', products);
+    console.log('Number of products:', products.length);
+
+    const tbody = $('#stockValidationTableBody');
+    console.log('tbody element found:', tbody.length, 'elements');
+
+    if (tbody.length === 0) {
+        console.error('❌ ERROR: tbody#stockValidationTableBody NOT FOUND in DOM!');
+        alert('Error: No se encontró el elemento de la tabla del modal. Verifica que el modal esté en el HTML.');
+        return;
+    }
+
+    tbody.empty();
+    console.log('Table cleared');
+
+    products.forEach((item, index) => {
+        console.log(`Adding row ${index + 1}:`, item.productCode, item.productName);
+        const row = `
+            <tr>
+                <td>${escapeHtml(item.productCode)}</td>
+                <td>${escapeHtml(item.productName)}</td>
+                <td class="text-center"><span class="badge bg-warning">${item.stockQuantity}</span></td>
+                <td class="text-center"><span class="badge bg-danger">${item.quantity}</span></td>
+            </tr>
+        `;
+        tbody.append(row);
+    });
+    console.log('All rows added to table');
+
+    // Show the modal
+    const modalElement = $('#stockValidationModal');
+    console.log('Modal element found:', modalElement.length, 'elements');
+
+    if (modalElement.length === 0) {
+        console.error('❌ ERROR: #stockValidationModal NOT FOUND in DOM!');
+        alert('Error: No se encontró el modal en el HTML. Verifica que el modal stockValidationModal esté en Create.cshtml');
+        return;
+    }
+
+    console.log('Calling modal.modal("show")...');
+    try {
+        modalElement.modal('show');
+        console.log('✅ modal.show() executed successfully');
+
+        // Verify if modal is actually shown
+        setTimeout(() => {
+            const isVisible = modalElement.hasClass('show');
+            console.log('Modal has "show" class:', isVisible);
+            if (!isVisible) {
+                console.error('❌ Modal did not become visible!');
+            }
+        }, 500);
+    } catch (error) {
+        console.error('❌ ERROR calling modal.show():', error);
+        alert('Error mostrando el modal: ' + error.message);
+    }
+
+    console.log('========== showStockValidationModal COMPLETED ==========');
 }
 
 // ============================================================================
@@ -642,7 +723,7 @@ function submitOrder() {
 
                 // Re-enable button to try again
                 $submitBtn.prop('disabled', false);
-                $submitBtn.html('<i class="fas fa-save"></i> Crear Orden');
+                $submitBtn.html('<i class="fas fa-check-circle"></i> Procesar Venta');
             }
         },
         error: function (xhr, status, error) {
@@ -678,7 +759,7 @@ function submitOrder() {
 
             // Re-enable button to try again
             $submitBtn.prop('disabled', false);
-            $submitBtn.html('<i class="fas fa-save"></i> Crear Orden');
+            $submitBtn.html('<i class="fas fa-check-circle"></i> Procesar Venta');
         },
         complete: function () {
             console.log('========== AJAX REQUEST COMPLETED ==========');

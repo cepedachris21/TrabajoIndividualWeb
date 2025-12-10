@@ -27,342 +27,391 @@
                 margin: 0.6cm;
                 size: letter;
             }
+
+            .invoice-card {
+                box-shadow: none !important;
+            }
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 10px;
-            color: #333;
-            line-height: 1.4;
+            background: linear-gradient(135deg, #e8eef3 0%, #d4dce6 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .invoice-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            overflow: hidden;
+            border: none;
         }
 
         .invoice-header {
-            border-bottom: 2px solid #0d6efd;
-            padding-bottom: 10px;
-            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .invoice-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
         }
 
         .invoice-title {
-            font-size: 1.8rem;
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .company-info h4 {
+            font-size: 1.5rem;
             font-weight: 700;
-            color: #0d6efd;
-            letter-spacing: 1.5px;
-            margin-bottom: 3px;
-        }
-
-        .company-info {
-            text-align: right;
-            font-size: 9px;
-            line-height: 1.5;
-        }
-
-            .company-info h4 {
-                font-size: 1.15rem;
-                margin-bottom: 5px;
-                color: #0d6efd;
-                font-weight: 700;
-            }
-
-            .company-info p {
-                margin-bottom: 2px;
-            }
-
-        .section-title {
-            background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
-            color: white;
-            padding: 5px 12px;
-            margin-top: 10px;
-            margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .customer-box {
-            background-color: #f8f9fa;
-            padding: 10px 12px;
-            border-left: 3px solid #0d6efd;
-            border-radius: 3px;
-        }
-
-            .customer-box p {
-                margin-bottom: 3px;
-                font-size: 9px;
-            }
-
-        .table {
-            font-size: 9px;
             margin-bottom: 10px;
         }
 
-            .table thead th {
-                background-color: #343a40;
-                color: white;
-                padding: 6px 8px;
-                font-weight: 600;
-                border: none;
-                text-transform: uppercase;
-                font-size: 9px;
-                letter-spacing: 0.3px;
-            }
-
-            .table tbody td {
-                padding: 5px 8px;
-                vertical-align: middle;
-                border-bottom: 1px solid #dee2e6;
-            }
-
-            .table tbody tr:last-child td {
-                border-bottom: 2px solid #343a40;
-            }
-
-            .table tbody tr:hover {
-                background-color: #f8f9fa;
-            }
-
-            /* Alineaciones específicas para la tabla de productos */
-            .table thead th.col-code,
-            .table tbody td.col-code {
-                text-align: left;
-                width: 12%;
-            }
-
-            .table thead th.col-description,
-            .table tbody td.col-description {
-                text-align: left;
-                width: 45%;
-            }
-
-            .table thead th.col-price,
-            .table tbody td.col-price {
-                text-align: right;
-                width: 15%;
-                font-family: 'Courier New', monospace;
-            }
-
-            .table thead th.col-quantity,
-            .table tbody td.col-quantity {
-                text-align: center;
-                width: 8%;
-                font-weight: 600;
-            }
-
-            .table thead th.col-total,
-            .table tbody td.col-total {
-                text-align: right;
-                width: 20%;
-                font-family: 'Courier New', monospace;
-                font-weight: 600;
-            }
-
-        .totals-table {
-            background-color: #fff;
-            font-size: 10px;
-            margin-bottom: 0;
+        .company-info p {
+            margin-bottom: 5px;
+            opacity: 0.95;
         }
 
-            .totals-table th {
-                text-align: left;
-                padding: 6px 10px;
-                font-weight: 600;
-                background-color: #f8f9fa;
-                border: 1px solid #dee2e6;
-            }
+        .section-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 15px 25px;
+            margin: 30px 0 20px 0;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+        }
 
-            .totals-table td {
-                text-align: right;
-                padding: 6px 10px;
-                font-family: 'Courier New', monospace;
-                border: 1px solid #dee2e6;
-                font-weight: 500;
-            }
+        .customer-card {
+            background: linear-gradient(135deg, #4b79a1 0%, #283e51 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(75, 121, 161, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .customer-card p {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .customer-card .info-label {
+            font-weight: 700;
+            opacity: 0.9;
+        }
+
+        .products-table {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .products-table thead {
+            background: linear-gradient(135deg, #434343 0%, #000000 100%);
+            color: white;
+        }
+
+        .products-table thead th {
+            padding: 18px 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            border: none;
+        }
+
+        .products-table tbody td {
+            padding: 15px;
+            vertical-align: middle;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .products-table tbody tr:hover {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 20%);
+            transition: all 0.3s ease;
+        }
+
+        .products-table tbody tr:last-child td {
+            border-bottom: 3px solid #1e3c72;
+        }
+
+        .totals-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .totals-table th {
+            padding: 12px;
+            font-weight: 600;
+            color: #666;
+            background: #f8f9fa;
+            border: none;
+        }
+
+        .totals-table td {
+            padding: 12px;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+            text-align: right;
+            font-size: 1.1rem;
+            border: none;
+        }
 
         .total-row {
-            background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%) !important;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
             color: white !important;
+            border-radius: 10px;
         }
 
-            .total-row th,
-            .total-row td {
-                font-size: 1.1rem;
-                font-weight: 700;
-                padding: 8px 10px;
-                border: none !important;
-            }
-
-        .invoice-header p {
-            margin-bottom: 3px;
-            line-height: 1.4;
+        .total-row th,
+        .total-row td {
+            font-size: 1.5rem !important;
+            font-weight: 800 !important;
+            padding: 20px !important;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
-        .badge {
-            font-size: 9px;
-            padding: 3px 8px;
-            font-weight: 600;
+        .notes-card {
+            background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+            margin-bottom: 30px;
         }
 
-        .notes-box {
-            background-color: #fff3cd;
-            border-left: 3px solid #ffc107;
-            padding: 8px 12px;
-            border-radius: 3px;
-            font-size: 9px;
-            margin-top: 10px;
+        .notes-card .info-label {
+            font-weight: 700;
+            color: #856404;
+            font-size: 1.1rem;
         }
 
         .invoice-footer {
-            margin-top: 15px;
-            padding-top: 10px;
-            border-top: 2px solid #dee2e6;
+            background: linear-gradient(135deg, #e8eef3 0%, #d4dce6 100%);
+            padding: 30px;
             text-align: center;
-            color: #6c757d;
+            border-radius: 0 0 20px 20px;
+            margin-top: 40px;
         }
 
-            .invoice-footer p {
-                margin-bottom: 3px;
-            }
+        .invoice-footer p {
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            padding: 8px 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
 
         .info-label {
-            font-weight: 600;
+            font-weight: 700;
             color: #495057;
         }
 
-        .mb-3 {
-            margin-bottom: 10px !important;
+        .btn-print {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 700;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(30, 60, 114, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-print:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.5);
+        }
+
+        .btn-close-custom {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 700;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(108, 117, 125, 0.4);
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .btn-close-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 117, 125, 0.5);
+            color: white;
+        }
+
+        .order-number {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            backdrop-filter: blur(10px);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Print Button -->
-        <div class="no-print mb-3">
-            <button onclick="window.print()" class="btn btn-primary btn-sm">
-                <i class="fas fa-print"></i> Imprimir Factura
+        <!-- Print Buttons -->
+        <div class="no-print mb-4 text-center">
+            <button onclick="window.print()" class="btn btn-print">
+                <i class="fas fa-print me-2"></i>Imprimir Factura
             </button>
-            <button onclick="window.close()" class="btn btn-secondary btn-sm">
-                <i class="fas fa-times"></i> Cerrar
+            <button onclick="window.close()" class="btn btn-close-custom ms-2">
+                <i class="fas fa-times me-2"></i>Cerrar
             </button>
         </div>
 
-        <!-- Invoice Header -->
-        <div class="invoice-header">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="invoice-title">FACTURA</div>
-                    <p class="mb-0"><span class="info-label">Número de Orden:</span> @Model.OrderNumber</p>
-                    <p class="mb-0"><span class="info-label">Fecha:</span> @Model.OrderDate.ToString("dd/MM/yyyy hh:mm tt")</p>
-                    <p class="mb-0"><span class="info-label">Estado:</span> <span class="badge bg-success">@Model.Status</span></p>
-                </div>
-                <div class="col-md-6 company-info">
-                    <h4>TechnoShop Ecuador</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Av. 9 de Octubre 123 y Malecón, Guayaquil</p>
-                    <p><i class="fas fa-id-card"></i> RUC: 0992345678001</p>
-                    <p><i class="fas fa-phone"></i> (04) 2345-678 | <i class="fab fa-whatsapp"></i> +593 99 234 5678</p>
-                    <p><i class="fas fa-envelope"></i> ventas@technoshop.ec</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bill To -->
-        <div class="section-title">
-            <i class="fas fa-user"></i> Datos del Cliente
-        </div>
-        <div class="customer-box mb-3">
-            <div class="row">
-                <div class="col-md-6">
-                    <p><span class="info-label">Cliente:</span> @Model.CustomerName</p>
-                    <p><span class="info-label">Cédula:</span> @Model.CustomerIdentification</p>
-                    <p><span class="info-label">Dirección:</span> @(Model.CustomerAddress ?? "N/A")</p>
-                </div>
-                <div class="col-md-6">
-                    <p><span class="info-label">Email:</span> @(Model.CustomerEmail ?? "N/A")</p>
-                    <p><span class="info-label">Teléfono:</span> @(Model.CustomerPhone ?? "N/A")</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Items -->
-        <div class="section-title">
-            <i class="fas fa-box"></i> Detalle de Productos
-        </div>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th class="col-code">Código</th>
-                    <th class="col-description">Descripción</th>
-                    <th class="col-price">Precio Unit.</th>
-                    <th class="col-quantity">Cant.</th>
-                    <th class="col-total">Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var detail in Model.OrderDetails)
-                {
-                    <tr>
-                        <td class="col-code">@detail.ProductCode</td>
-                        <td class="col-description">@detail.ProductName</td>
-                        <td class="col-price">$@detail.UnitPrice.ToString("N2")</td>
-                        <td class="col-quantity">@detail.Quantity</td>
-                        <td class="col-total">$@detail.LineTotal.ToString("N2")</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-
-        <!-- Totals and Notes Row -->
-        <div class="row">
-            @if (!string.IsNullOrEmpty(Model.Notes))
-            {
-                <div class="col-md-7">
-                    <div class="notes-box">
-                        <p class="mb-0"><span class="info-label"><i class="fas fa-sticky-note"></i> Observaciones:</span></p>
-                        <p class="mb-0 mt-1">@Model.Notes</p>
+        <div class="invoice-card">
+            <!-- Invoice Header -->
+            <div class="invoice-header">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="invoice-title">FACTURA</div>
+                        <p class="mb-2"><span class="order-number">@Model.OrderNumber</span></p>
+                        <p class="mb-1"><i class="fas fa-calendar-alt me-2"></i>@Model.OrderDate.ToString("dd/MM/yyyy hh:mm tt")</p>
+                        <p class="mb-0"><i class="fas fa-check-circle me-2"></i><span class="badge bg-success">@Model.Status</span></p>
+                    </div>
+                    <div class="col-md-6 text-end company-info">
+                        <h4>CellExpress - Tecnología Móvil</h4>
+                        <p><i class="fas fa-map-marker-alt me-2"></i>Av. Cevallos 18-45 y Montalvo, Centro de Ambato, Ecuador</p>
+                        <p><i class="fas fa-id-card me-2"></i>RUC: 1803456789001</p>
+                        <p><i class="fas fa-phone me-2"></i>(03) 282-5647 | <i class="fab fa-whatsapp me-1"></i>+593 98 456 7890</p>
+                        <p><i class="fas fa-envelope me-2"></i>info@cellexpress.ec</p>
                     </div>
                 </div>
-                <div class="col-md-5">
-                    <table class="table totals-table">
-                        <tr>
-                            <th>Subtotal:</th>
-                            <td>$@Model.Subtotal.ToString("N2")</td>
-                        </tr>
-                        <tr>
-                            <th>IVA (15%):</th>
-                            <td>$@Model.TaxAmount.ToString("N2")</td>
-                        </tr>
-                        <tr class="total-row">
-                            <th>TOTAL:</th>
-                            <td>$@Model.TotalAmount.ToString("N2")</td>
-                        </tr>
-                    </table>
-                </div>
-            }
-            else
-            {
-                <div class="col-md-12 d-flex justify-content-end">
-                    <table class="table totals-table" style="width: 320px;">
-                        <tr>
-                            <th>Subtotal:</th>
-                            <td>$@Model.Subtotal.ToString("N2")</td>
-                        </tr>
-                        <tr>
-                            <th>IVA (15%):</th>
-                            <td>$@Model.TaxAmount.ToString("N2")</td>
-                        </tr>
-                        <tr class="total-row">
-                            <th>TOTAL A PAGAR:</th>
-                            <td>$@Model.TotalAmount.ToString("N2")</td>
-                        </tr>
-                    </table>
-                </div>
-            }
-        </div>
+            </div>
 
-        <!-- Footer -->
-        <div class="invoice-footer">
-            <p style="font-size: 11px; font-weight: 600; color: #0d6efd;">¡Gracias por su compra!</p>
-            <p style="font-size: 9px;">Esta es una factura generada por computadora y no requiere firma.</p>
-            <p style="font-size: 9px;">Para consultas o reclamos: ventas@technoshop.ec | WhatsApp: +593 99 234 5678</p>
+            <div class="p-4">
+                <!-- Customer Info -->
+                <div class="section-header">
+                    <i class="fas fa-user me-2"></i>DATOS DEL CLIENTE
+                </div>
+                <div class="customer-card">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><span class="info-label">Cliente:</span> @Model.CustomerName</p>
+                            <p><span class="info-label">Cédula:</span> @Model.CustomerIdentification</p>
+                            <p class="mb-0"><span class="info-label">Dirección:</span> @(Model.CustomerAddress ?? "N/A")</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><span class="info-label">Email:</span> @(Model.CustomerEmail ?? "N/A")</p>
+                            <p class="mb-0"><span class="info-label">Teléfono:</span> @(Model.CustomerPhone ?? "N/A")</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products -->
+                <div class="section-header">
+                    <i class="fas fa-box me-2"></i>DETALLE DE PRODUCTOS
+                </div>
+                <table class="table products-table mb-4">
+                    <thead>
+                        <tr>
+                            <th style="width: 12%;">CÓDIGO</th>
+                            <th style="width: 45%;">DESCRIPCIÓN</th>
+                            <th style="width: 15%;" class="text-end">PRECIO UNIT.</th>
+                            <th style="width: 8%;" class="text-center">CANT.</th>
+                            <th style="width: 20%;" class="text-end">TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var detail in Model.OrderDetails)
+                        {
+                            <tr>
+                                <td>@detail.ProductCode</td>
+                                <td><strong>@detail.ProductName</strong></td>
+                                <td class="text-end">$@detail.UnitPrice.ToString("N2")</td>
+                                <td class="text-center"><strong>@detail.Quantity</strong></td>
+                                <td class="text-end"><strong>$@detail.LineTotal.ToString("N2")</strong></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <!-- Totals and Notes -->
+                <div class="row">
+                    @if (!string.IsNullOrEmpty(Model.Notes))
+                    {
+                        <div class="col-md-7">
+                            <div class="notes-card">
+                                <p class="mb-2"><span class="info-label"><i class="fas fa-sticky-note me-2"></i>Observaciones:</span></p>
+                                <p class="mb-0">@Model.Notes</p>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="totals-card">
+                                <table class="table totals-table mb-0">
+                                    <tr>
+                                        <th>Subtotal:</th>
+                                        <td>$@Model.Subtotal.ToString("N2")</td>
+                                    </tr>
+                                    <tr>
+                                        <th>IVA (15%):</th>
+                                        <td>$@Model.TaxAmount.ToString("N2")</td>
+                                    </tr>
+                                    <tr class="total-row">
+                                        <th>TOTAL:</th>
+                                        <td>$@Model.TotalAmount.ToString("N2")</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-12 d-flex justify-content-end">
+                            <div class="totals-card" style="width: 400px;">
+                                <table class="table totals-table mb-0">
+                                    <tr>
+                                        <th>Subtotal:</th>
+                                        <td>$@Model.Subtotal.ToString("N2")</td>
+                                    </tr>
+                                    <tr>
+                                        <th>IVA (15%):</th>
+                                        <td>$@Model.TaxAmount.ToString("N2")</td>
+                                    </tr>
+                                    <tr class="total-row">
+                                        <th>TOTAL A PAGAR:</th>
+                                        <td>$@Model.TotalAmount.ToString("N2")</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="invoice-footer">
+                <p style="font-size: 1.3rem; font-weight: 700; color: #1e3c72; margin-bottom: 15px;">
+                    <i class="fas fa-heart me-2"></i>¡Gracias por su compra!
+                </p>
+                <p style="font-size: 0.95rem; color: #666;">Esta es una factura generada por computadora y no requiere firma.</p>
+                <p style="font-size: 0.9rem; color: #888;">Para consultas o reclamos: info@cellexpress.ec | WhatsApp: +593 98 456 7890</p>
+            </div>
         </div>
     </div>
 
